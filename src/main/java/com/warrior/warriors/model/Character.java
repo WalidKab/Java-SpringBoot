@@ -1,10 +1,23 @@
 package com.warrior.warriors.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="Caracter")
 public class Character {
     //Propriétés de base de la classe Character
+    @Id
+    @GeneratedValue
     private int id;
+
+    @Column(name = "name", length = 250, nullable = false)
     private String name;
+
+    @Column(name = "type", length = 250, nullable = false)
     private String type;
+
+    public Character() {
+    }
 
     // Création du conbstructeur
     public Character(int id, String name, String type) {

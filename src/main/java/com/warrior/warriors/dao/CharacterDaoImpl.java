@@ -1,8 +1,12 @@
 package com.warrior.warriors.dao;
 
 import com.warrior.warriors.model.Character;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,9 +17,21 @@ public class CharacterDaoImpl implements CharacterDao{
         characters.add(new Character(1, "Mage", "Magicien"));
         characters.add(new Character(2, "Guerrier", "Guerrier"));
         characters.add(new Character(3, "Guerrier Magicien", "Guerrier"));
+        characters.add(new Character(4, "Guerrier Celte", "Guerrier"));
     }
+
+    @Autowired
+    EntityManager entityManager;
+
     @Override
     public List<Character> findAll() {
+//        try {
+//            String sql = "SELECT * FROM Caracter";
+//            Query query = entityManager.createQuery(sql);
+//            return query.getResultList();
+//        } catch (NoResultException e) {
+//            return null;
+//        }
         return characters;
     }
 
